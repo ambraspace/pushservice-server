@@ -1,0 +1,19 @@
+{
+	"type": "message",
+	"message" : {
+		"id" : <long>,
+		"text" : <string>,
+		"date" : <long>,
+		"to" : [
+			"ID1",
+			"ID2",
+			...
+			"IDN"
+		]
+	}
+}
+
+{
+	"type": "command",
+	"command" : <string>
+}
