@@ -6,6 +6,9 @@
 	<version>0.1-SNAPSHOT</version>
 	 <name>PushService Server</name>
 	 <description>Java implementation of Push Service (Server part)</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.json</groupId>
