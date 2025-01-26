@@ -193,7 +193,7 @@ public class MySQLDBManager implements DBManager {
 					"LEFT JOIN messages ON client_messages.message_id=messages.id " +
 					"LEFT JOIN clients ON client_messages.client_id=clients.id "+
 					"WHERE clients.uid=\"" + clientUID + "\" AND clients.disabled=0 " +
-					"ORDER BY client_messages.message_id DESC LIMIT " + limit + ") msgs " +
+					"ORDER BY client_messages.message_id DESC " + (limit < 1 ? "" : "LIMIT " + limit) + ") msgs " +
 					"WHERE delivered=0 ORDER BY id ASC");
 			ResultSet rs = stmt.getResultSet();
 			List<DelayedMessage> retVal = new ArrayList<DelayedMessage>(); 
@@ -209,6 +209,7 @@ public class MySQLDBManager implements DBManager {
 			return retVal;
 		} catch (SQLException e) {
 	    	logger.logp(Level.SEVERE, "MySQLDBManager", "getDelayedMessages()","SQLException caught!");
+	    	e.printStackTrace();
 			return null;
 		}
 	}
