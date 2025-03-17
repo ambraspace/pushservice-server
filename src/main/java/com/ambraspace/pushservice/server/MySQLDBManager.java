@@ -47,12 +47,12 @@ public class MySQLDBManager implements DBManager {
 		
 		try {
 			if (connection == null || (!connection.isValid(5))) {
-				connection = DriverManager.getConnection("jdbc:mysql://" +
+				connection = DriverManager.getConnection("jdbc:mariadb://" +
 						this.host +
 						(this.port <= 0 ? "/" : ":"+port+"/") +
 						this.database + "?user=" +
 						this.username + "&password=" +
-						this.password);
+						(this.password != null ? this.password :  ""));
 				connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			}
 		} catch (SQLException e) {
